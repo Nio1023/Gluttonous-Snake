@@ -16,7 +16,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'docs'),
-    publicPath: '/Gluttonous-Snake/',
+    publicPath: 'Gluttonous-Snake/',
     filename: 'bundle.js',
     environment: {
       arrowFunction: false,
