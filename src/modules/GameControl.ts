@@ -11,6 +11,9 @@ class GameControl{
   mobileDown:HTMLElement
   mobileLeft:HTMLElement
   mobileRight:HTMLElement
+  loseEle:HTMLElement
+  loseMessageEle:HTMLElement
+  restartEle:HTMLElement
 
   direction:string = ''
 
@@ -24,6 +27,9 @@ class GameControl{
     this.mobileDown = document.getElementById('down')!
     this.mobileLeft = document.getElementById('left')!
     this.mobileRight = document.getElementById('right')!
+    this.loseEle = document.getElementById('mask')!
+    this.loseMessageEle = document.getElementById('message')!
+    this.restartEle = document.getElementById('restart')!
     this.init()
   }
 
@@ -39,6 +45,7 @@ class GameControl{
   }
 
   keydownHandler(event:KeyboardEvent){
+    console.log(event.key)
     this.direction = event.key
   }
 
@@ -49,7 +56,6 @@ class GameControl{
   run(){
     let X = this.snake.X
     let Y = this.snake.Y
-    console.log(X,Y)
     switch(this.direction){
       case "ArrowUp":
       case "Up":
@@ -65,7 +71,6 @@ class GameControl{
         break;
       case "ArrowRight":
       case "Right":
-        console.log('111')
         X += 10
         break;
     }
@@ -76,8 +81,12 @@ class GameControl{
       this.snake.X = X
       this.snake.Y = Y
     } catch (error:any) {
-      alert(error.message + 'Game Over!')
+      this.loseMessageEle.innerText = error.message + 'Game Over!'
+      this.loseEle.style.display = "block"
       this.isLive = false
+      this.restartEle.addEventListener('click',()=>{
+        location.reload()
+      })
     }
 
     this.isLive && setTimeout(this.run.bind(this), 300 - ( this.scorePanel.level - 1 ) * 30)

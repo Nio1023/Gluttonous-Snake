@@ -17,7 +17,6 @@ function IsPC() {
 }
  
 var flag = IsPC(); 
-console.log(flag)
 if(flag){
   (document.getElementById('mobile') as HTMLElement).style.display ="none"
 }

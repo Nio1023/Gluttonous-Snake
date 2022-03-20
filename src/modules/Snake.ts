@@ -81,8 +81,8 @@ class Snake{
   }
 
   init(){
-    this.X = Math.round(Math.random() * 300)
-    this.Y = Math.round(Math.random() * 300)
+    this.X = Math.round(Math.random() * 30) * 10
+    this.Y = Math.round(Math.random() * 30) * 10
   }
 
   // 判断蛇有没有撞到自己
