@@ -80,6 +80,11 @@ class Snake{
     }
   }
 
+  init(){
+    this.X = Math.round(Math.random() * 300)
+    this.Y = Math.round(Math.random() * 300)
+  }
+
   // 判断蛇有没有撞到自己
   checkHeadBody(){
     for(let i = 1;i<this.bodies.length;i++){

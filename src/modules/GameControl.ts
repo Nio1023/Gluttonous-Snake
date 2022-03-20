@@ -28,6 +28,8 @@ class GameControl{
   }
 
   init(){
+    this.snake.init()
+    this.food.change()
     document.addEventListener('keydown',this.keydownHandler.bind(this))
     this.mobileUp.addEventListener('click',this.mobiledownHandler.bind(this,'Up'))
     this.mobileDown.addEventListener('click',this.mobiledownHandler.bind(this,'Down'))
@@ -40,8 +42,7 @@ class GameControl{
     this.direction = event.key
   }
 
-  mobiledownHandler(key:string){
-    console.log(key)
+  mobiledownHandler(key:string,event:MouseEvent){
     this.direction = key
   }
 
